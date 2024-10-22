@@ -93,7 +93,7 @@ const { mobile } = useDisplay()
           <v-card flat class="terms-card">
             <v-card-title class="term-n-use">Terms of Use</v-card-title>
             <v-card-text>
-                By accessing and using this website, you agree to the following terms and conditions. The platform allows users to search for and read books online. All content available through the website may be protected by copyright laws, and users should be aware that the availability of books for reading may vary by region. Users outside the United States should verify copyright laws in their country before accessing the content.
+                By accessing and using this website, you agree to the following terms and conditions. The platform allows users to search for and read books online. All content available through the website may be protected by copyright laws, and users should be aware that the availability of books for reading may vary by region.
               <br/><br/>
                 The website is designed for use by human users only. Automated tools or bots that scrape or misuse the platform may be blocked from accessing the site. To ensure a smooth experience and maintain platform integrity, cookies and related technologies may be used.
               <br/><br/>
