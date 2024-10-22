@@ -2,98 +2,147 @@
 import RegisterForm from '@/components/auth/RegisterForm.vue'
 import { useDisplay } from 'vuetify'
 
-const { mobile } = useDisplay()
+const { xs, smAndDown } = useDisplay();  
 </script>
 
 <template>
-      <v-container fluid>
-        <v-row>
-          <v-col cols="12" lg="6" class="bg-surface-dark h-screen text-center d-flex flex-column align-center justify-center" v-if="!mobile">
-            <h1 class="gradient-text">Welcome to Bookbyte</h1>
+  <v-container fluid class="full-height-container">
+    <v-row no-gutters class="custom-flex-container">
+      
+      <v-col v-if="!smAndDown" cols="12" md="6" lg="6" class="bg-surface-dark text-center d-flex flex-column align-center justify-center left-col">
+        <div class="content-wrapper">
+          <h1 class="gradient-text">Welcome to Bookbyte</h1>
+          <div class="desktop-social-section">
             <p class="quote-text">-------------------------------------- OR ---------------------------------------</p>
-
             <div class="social-login">
-          <v-btn icon large>
-            <v-icon color="red darken-1">mdi-google</v-icon>
-          </v-btn>
-          <v-btn icon large>
-            <v-icon color="blue darken-4">mdi-facebook</v-icon>
-          </v-btn>
+              <v-btn icon large>
+                <v-icon color="red darken-1">mdi-google</v-icon>
+              </v-btn>
+              <v-btn icon large>
+                <v-icon color="blue darken-4">mdi-facebook</v-icon>
+              </v-btn>
+            </div>
+          </div>
         </div>
-          </v-col>
+      </v-col>
 
-          <v-col cols="12" lg="6" class="d-flex align-center justify-center" :class="mobile ? '' : 'pt-2 h-screen'">
-            <v-card class="mx-auto custom-card" elevation="0" max-width="600">
-              <v-card-title class="text-center">
-                <v-img
-                  src="/images/book-logo.png"
-                  :height="mobile ? '200%' : '200'"
-                  contain
-                ></v-img>
-                <h2 class="font-weight-black">BOOKBYTE</h2>
-                <h5>Registration</h5>
-              </v-card-title>
+      <v-col cols="12" md="6" lg="6" class="d-flex align-center justify-center right-col">
+        <v-card class="mx-auto custom-card" elevation="0" max-width="600">
+          
+          <div v-if="smAndDown" class="mobile-welcome-section">
+            <h1 class="gradient-text">Welcome to Bookbyte</h1>
+          </div>
 
-              <v-card-text class="pt-4">
-                <v-divider class="my-5"></v-divider>
+          <v-card-title class="text-center d-flex flex-column align-center justify-center">
+            <v-img
+              src="/images/book-logo.png"
+              :height="smAndDown ? '120px' : '200px'"
+              :width="smAndDown ? '120px' : '200px'"
+              contain
+              class="mx-auto"
+            ></v-img>
+            <h2 class="font-weight-black">BOOKBYTE</h2>
+            <h5>Registration</h5>
+          </v-card-title>
 
-                <RegisterForm></RegisterForm>
+          <v-card-text class="pt-2">
+            <v-divider class="my-3"></v-divider>
 
-                <v-divider class="my-5"></v-divider>
+            <RegisterForm></RegisterForm>
 
-                <h4 class="text-center font-weight-black-">
-                  Already have an account?
-                  <RouterLink to="/" class="custom-link">
-                    Log in here
-                  </RouterLink>
-                </h4>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+            <v-divider class="my-3"></v-divider>
+
+            <h4 class="text-center font-weight-black-">
+              Already have an account?
+              <RouterLink to="/" class="custom-link">
+                Log in here
+              </RouterLink>
+            </h4>
+          </v-card-text>
+
+          <div v-if="smAndDown" class="mobile-social-section">
+            <p class="quote-text">-------------------------------------- OR ---------------------------------------</p>
+            <div class="social-login">
+              <v-btn icon large>
+                <v-icon color="red darken-1">mdi-google</v-icon>
+              </v-btn>
+              <v-btn icon large>
+                <v-icon color="blue darken-4">mdi-facebook</v-icon>
+              </v-btn>
+            </div>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-
 <style scoped>
+.full-height-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; 
+}
+
+.custom-flex-container {
+  display: flex;
+  flex-wrap: wrap; 
+  height: 100vh; 
+}
+
+.left-col,
+.right-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+}
+
+.content-wrapper {
+  width: 100%;  
+  max-width: 500px; 
+}
 
 .gradient-text {
   background: linear-gradient(45deg, #64c0ce, #b909fe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3rem;
+  font-size: 2.5rem; 
 }
 
+@media (max-width: 600px) {
+  .gradient-text {
+    font-size: 2rem;
+  }
+}
 
 .quote-text {
   font-size: 1rem;
-  margin-top: 15px; 
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .quote-text {
+    font-size: 0.8rem;
+  }
 }
 
 .custom-card {
-  max-width: 700px;
   width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px; 
 }
 
 .social-login {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px; 
-}
-
-.signup-section {
-  text-align: center;
-  padding-top: 1rem;
-}
-
-.signup-link {
-  color: #b39ddb;
-  font-weight: bold;
+  gap: 15px;
+  margin-top: 15px; 
 }
 
 .custom-link {
@@ -102,5 +151,21 @@ const { mobile } = useDisplay()
 
 .custom-link:active, .custom-link:focus {
   color: #b39ddb;
+}
+
+.mobile-social-section {
+  margin-top: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.desktop-social-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.mobile-welcome-section {
+  text-align: center;
+  margin-bottom: 10px;
 }
 </style>
