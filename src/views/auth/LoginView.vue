@@ -10,7 +10,7 @@ const { xs, smAndDown } = useDisplay();
     <v-row no-gutters class="custom-flex-container">
       <v-col v-if="!smAndDown" cols="12" md="6" lg="6" class="bg-surface-dark text-center d-flex flex-column align-center justify-center left-col">
         <div class="content-wrapper">
-          <h1 class="gradient-text">Welcome to Bookbyte</h1>
+          <h1 class="gradient-text">Welcome to BookByte</h1>
           <p class="quote-text">Discover Endless Knowledge And Unlock Your Potential With Every Page.</p>
         </div>
       </v-col>
@@ -18,8 +18,8 @@ const { xs, smAndDown } = useDisplay();
       <v-col cols="12" md="6" lg="6" class="d-flex align-center justify-center right-col">
         <v-card class="custom-card mx-auto" elevation="0">
           <div v-if="smAndDown" class="mobile-welcome-section">
-            <h1 class="gradient-text">Welcome to Bookbyte</h1>
-            <p class="quote-text">Discover endless knowledge and unlock your potential with every page.</p>
+            <h1 class="gradient-text">Welcome to BookByte</h1>
+            <p class="quote-text">Discover Endless Knowledge And Unlock Your Potential With Every Page.</p>
           </div>
 
           <v-card-title class="text-center d-flex flex-column align-center justify-center">
