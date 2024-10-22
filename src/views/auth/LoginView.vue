@@ -1,25 +1,32 @@
 <script setup>
 import LoginForm from '@/components/auth/LoginForm.vue'
+import { useDisplay } from 'vuetify'
+
+const { xs, smAndDown } = useDisplay();  
 </script>
 
 <template>
   <v-container fluid class="full-height-container">
-    <!-- Custom class for flexbox to keep side-by-side layout on all screen sizes -->
     <v-row no-gutters class="custom-flex-container">
-      <!-- Left side with welcome message and quote -->
-      <v-col cols="12" xs="6" md="6" lg="6" class="bg-surface-dark text-center d-flex flex-column align-center justify-center">
-        <h1 class="gradient-text">Welcome to Bookbyte</h1>
-        <p class="quote-text">Discover endless knowledge and unlock your potential with every page.</p>
+      <v-col v-if="!smAndDown" cols="12" md="6" lg="6" class="bg-surface-dark text-center d-flex flex-column align-center justify-center left-col">
+        <div class="content-wrapper">
+          <h1 class="gradient-text">Welcome to Bookbyte</h1>
+          <p class="quote-text">Discover Endless Knowledge And Unlock Your Potential With Every Page.</p>
+        </div>
       </v-col>
 
-      <!-- Right side with login form -->
-      <v-col cols="12" xs="6" md="6" lg="6" class="d-flex align-center justify-center">
+      <v-col cols="12" md="6" lg="6" class="d-flex align-center justify-center right-col">
         <v-card class="custom-card mx-auto" elevation="0">
+          <div v-if="smAndDown" class="mobile-welcome-section">
+            <h1 class="gradient-text">Welcome to Bookbyte</h1>
+            <p class="quote-text">Discover endless knowledge and unlock your potential with every page.</p>
+          </div>
+
           <v-card-title class="text-center d-flex flex-column align-center justify-center">
             <v-img
               src="/images/book-logo.png"
-              :height="150"
-              :width="150"
+              :height="smAndDown ? '120px' : '150px'"
+              :width="smAndDown ? '120px' : '150px'"
               contain
               class="mx-auto"
             ></v-img>
@@ -27,12 +34,12 @@ import LoginForm from '@/components/auth/LoginForm.vue'
             <h5>Login</h5>
           </v-card-title>
 
-          <v-card-text class="pt-4">
-            <v-divider class="my-5"></v-divider>
+          <v-card-text class="pt-2">
+            <v-divider class="my-3"></v-divider>
 
             <LoginForm></LoginForm>
 
-            <v-divider class="my-5"></v-divider>
+            <v-divider class="my-3"></v-divider>
 
             <h4 class="text-center font-weight-black-">
               Don't have an account yet?
@@ -48,57 +55,71 @@ import LoginForm from '@/components/auth/LoginForm.vue'
 </template>
 
 <style scoped>
-/* Ensure the full height for mobile layouts */
 .full-height-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; 
 }
 
-/* Custom Flexbox styles to prevent stacking on mobile */
 .custom-flex-container {
   display: flex;
-  flex-direction: row !important; /* Force row direction even on small screens */
-  flex-wrap: nowrap;              /* Prevent wrapping */
-  height: 100vh;                  /* Ensure both sides take up full height */
+  flex-wrap: wrap; 
+  height: 100vh; 
 }
 
-/* Gradient text for the welcome message */
+.left-col,
+.right-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+}
+
+.content-wrapper {
+  width: 100%;  
+  max-width: 500px; 
+}
+
 .gradient-text {
   background: linear-gradient(45deg, #64c0ce, #dd34f3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3rem;
+  font-size: 2.5rem; 
 }
 
-/* Media query for mobile font size adjustment */
 @media (max-width: 600px) {
   .gradient-text {
     font-size: 2rem;
   }
 }
 
-/* Quote text styling */
 .quote-text {
   font-size: 1rem;
-  margin-top: 15px;
+  margin-top: 10px;
+  text-align: center;
 }
 
-/* Media query for mobile quote text adjustment */
 @media (max-width: 600px) {
   .quote-text {
     font-size: 0.8rem;
   }
 }
 
-/* Custom card styling */
 .custom-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px; 
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px; 
 }
 
 .custom-link {
@@ -107,5 +128,10 @@ import LoginForm from '@/components/auth/LoginForm.vue'
 
 .custom-link:active, .custom-link:focus {
   color: #b39ddb;
+}
+
+.mobile-welcome-section {
+  text-align: center;
+  margin-bottom: 10px;
 }
 </style>

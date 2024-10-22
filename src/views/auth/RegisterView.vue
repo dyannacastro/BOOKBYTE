@@ -13,7 +13,7 @@ const { xs, smAndDown } = useDisplay();
         <div class="content-wrapper">
           <h1 class="gradient-text">Welcome to Bookbyte</h1>
           <div class="desktop-social-section">
-            <p class="quote-text">-------------------------------------- OR ---------------------------------------</p>
+            <p class="quote-text">------------------------------------- OR --------------------------------------</p>
             <div class="social-login">
               <v-btn icon large>
                 <v-icon color="red darken-1">mdi-google</v-icon>
