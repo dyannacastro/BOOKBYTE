@@ -13,8 +13,8 @@ const { xs, smAndDown } = useDisplay();
         <div class="content-wrapper">
           <h1 class="gradient-text">Welcome to BookByte</h1>
           <div class="desktop-social-section">
-            <p class="quote-text">Continue to Sign Up? <br><br>
-              ------------------------------------- OR --------------------------------------</p>
+            <p class="quote-text">Continue to Sign Up?</p>
+            <v-divider class="my-3" style="border-width: 1px; opacity: 0.5;">OR</v-divider>
             <div class="social-login">
               <v-btn icon large>
                 <v-icon color="red darken-1">mdi-google</v-icon>
@@ -62,8 +62,8 @@ const { xs, smAndDown } = useDisplay();
           </v-card-text>
 
           <div v-if="smAndDown" class="mobile-social-section">
-            <p class="quote-text">Continue to Sign Up? <br><br>
-              -------------------------------------- OR ---------------------------------------</p>
+            <p class="quote-text">Continue to Sign Up?</p>
+            <v-divider class="my-3" style="border-width: 1px; opacity: 0.5;">OR</v-divider>
             <div class="social-login">
               <v-btn icon large>
                 <v-icon color="red darken-1">mdi-google</v-icon>
